@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{%block content%}
+    <div class="custo">
+        <table class="tab" cellspacing="20px" >
+            <th></th>
+            <th></th>
+            <tr>
+                <td class="col_name">Name:</td>
+                <td>{{customer.name}}</td>
+            </tr>
+            <tr>
+                <td class="col_name">Email:</td>
+                <td>{{customer.email}}</td>
+            </tr>
+            <tr>
+                <td class="col_name">Current balance:</td>
+                <td>{{customer.current_balance}}</td>
+            </tr>
+            <tr>
+                <td class="col_name">Address:</td>
+                <td>{{customer.address}}</td>
+            </tr>
+            <tr>
+                <td class="col_name">Phone no:</td>
+                <td>{{customer.phone_number}}</td>
+            </tr>
+        </table>
+        <button onclick="fun()" class="btn_home">Transfer Money</button>
+        <div id="cus_det" class="dis" style="margin-top: 8px;">
+            <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                {%for item in customer_all%}
+                <a href="#about">
+                    <form action="/transfer/{{customer.id}}/{{item.id}}" method="GET">
+                    <button class="btn" type="submit">{{item.name}}</button>
+                </form></a>
+                
+            
+            {%endfor%}
+              </div>
+        </div>
+    </div>
+    <script>
+        function fun(){
+            var cus_det=document.getElementById('cus_det')
+            cus_det.classList.toggle('dis')
+        }
+        function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+          txtValue = a[i].textContent || a[i].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+        } else {
+         a[i].style.display = "none";
+        }
+        }
+        }
+    </script>
+{%endblock%}

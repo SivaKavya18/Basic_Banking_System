@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{%block content%}
+    <div class="transf">
+        <table class="all_cus" cellpadding="2">
+            <th>NAME</th>
+            <th>CURRENT BALANCE</th>
+            <tr>
+                <td>{{customer1.name}}</td>
+                <td>{{customer1.current_balance}}</td>
+            </tr>
+            <tr>
+                <td>{{customer2.name}}</td>
+                <td>{{customer2.current_balance}}</td>
+            </tr>
+        </table>
+        <p class="transfer_det"><span class="cus_name">{{customer1.name}}</span> to <span class="cus_name">{{customer2.name}}</span></p>
+        <form action="/tran/{{customer1.id}}/{{customer2.id}}" method="GET">
+            <input type="number" id="transfer_value" name="transferval" />
+            <button type="submit" class="btn_home">Transfer</button>
+        </form>
+        <p class="result">{{result}}</p>
+    </div>
+{%endblock%}

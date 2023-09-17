@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{%block content%}
+    <div class="cus">
+        <form action="/search/" method="GET" class="search_p">
+            <input type="search" value='' name="search_val"/>
+            <button type="submit" class="btn_home">Search</button>
+        </form>
+        <table class="all_cus">
+        {%for item in customer%}
+        <tr>
+        <td>
+        <p style="padding-top: 10px;">{{item.id}}.  {{item.name}}</p>
+        </td>
+        <td>
+        <form action="/customer/{{item.id}}" method="GET">
+            <button type="submit" class="btn_home">Select</button>
+        </form>
+        </td>
+        </tr>
+        {%endfor%}
+        </table>
+    </div>
+{%endblock%}

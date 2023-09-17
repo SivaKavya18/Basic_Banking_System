@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class="tabo">
+    <table cellpadding="3" class="tab_his">
+        <th>SENDER</th>
+        <th>RECIEVER</th>
+        <th>AMOUNT TRANSFERRED</th>
+        <th>DATE</th>
+        {%for item in history%}
+        <tr>
+            <td>{{item.sender}}</td>
+            <td>{{item.reciever}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.date_transfer}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+{%endblock%}
